@@ -1,0 +1,49 @@
+<h1>Web-SVF</h1>
+<button mat-button [disabled]="disableRunBtn" (click)="submitCode()">Run!</button>
+<h2>Input</h2>
+<ngx-codemirror [(ngModel)]="input" [options]="{
+        lineNumbers: true,
+        theme: 'material',
+        mode: 'clike',
+        viewportMargin: '20'
+      }"></ngx-codemirror>
+
+<h2>Output</h2>
+<div *ngIf="outputs.length === 0">
+  <h2>The output of your code will be displayed here.</h2>
+</div>
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab *ngFor="let output of outputs; index as i" label="{{ output.name }}">
+    <div id ="{{ i }}"></div>
+  </mat-tab>
+</mat-tab-group>
+
+
+
+<!-- <div class="svf">
+  <h1>Web-SVF</h1>
+  <button mat-button class="run-btn" [disabled]="disableRunBtn" (click)="submitCode()">Run!</button>
+  <div class="application">
+    <div class="input">
+      <h2>Input</h2>
+      <div class="ngx-codemirror">
+        <ngx-codemirror [(ngModel)]="input" [options]="{
+        lineNumbers: true,
+        theme: 'material',
+        mode: 'clike',
+        viewportMargin: '20'
+      }"></ngx-codemirror>
+      </div>
+    </div>
+    <div class="output">
+      <h2>Output</h2>
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="First">
+          <div id="output" class="output"></div>
+        </mat-tab>
+        <mat-tab label="Second"> Content 2 </mat-tab>
+        <mat-tab label="Third"> Content 3 </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div> -->

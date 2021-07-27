@@ -1,0 +1,14 @@
+digraph "Call Graph" {
+	label="Call Graph";
+
+	Node0x562d73d8c020 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 5 \{fun: fclose\}}"];
+	Node0x562d73d856b0 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 4 \{fun: printf\}}"];
+	Node0x562d73d90b30 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 3 \{fun: fgetc\}}"];
+	Node0x562d73d90790 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 2 \{fun: fopen\}}"];
+	Node0x562d73d90920 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 1 \{fun: llvm.dbg.declare\}}"];
+	Node0x562d73d87950 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: main\}|{<s0>1|<s1>2|<s2>3|<s3>4}}"];
+	Node0x562d73d87950:s0 -> Node0x562d73d90790[color=black];
+	Node0x562d73d87950:s1 -> Node0x562d73d90b30[color=black];
+	Node0x562d73d87950:s2 -> Node0x562d73d856b0[color=black];
+	Node0x562d73d87950:s3 -> Node0x562d73d8c020[color=black];
+}
