@@ -1,22 +1,34 @@
 <h1>Web-SVF</h1>
 <button mat-button [disabled]="disableRunBtn" (click)="submitCode()">Run!</button>
-<h2>Input</h2>
-<ngx-codemirror [(ngModel)]="input" [options]="{
-        lineNumbers: true,
-        theme: 'material',
-        mode: 'clike',
-        viewportMargin: '20'
-      }"></ngx-codemirror>
+<div class="row">
+  <div class="col s6">
+  <h2>Input</h2>
+  <ngx-codemirror [(ngModel)]="input" [options]="{
+    lineNumbers: true,
+    theme: 'material',
+    mode: 'clike',
+    viewportMargin: '20'
+  }"></ngx-codemirror>
+</div>
+<div class="col s6">
+<h2>Command line</h2>
+  <ngx-codemirror [(ngModel)]="commandLineOutput" [options]="{
+    lineNumbers: false,
+    theme: 'material-darker',
+    mode: 'clike',
+    viewportMargin: '20',
+    readOnly: true
+  }"></ngx-codemirror>
+</div>
+</div>
 
 <h2>Output</h2>
-<div *ngIf="outputs.length === 0">
-  <h2>The output of your code will be displayed here.</h2>
-</div>
-<mat-tab-group mat-align-tabs="start">
+<h2 *ngIf="outputs.length === 0">The output of your code will be displayed here.</h2>
+<mat-tab-group mat-align-tabs="start" (selectedTabChange)="onTabChanged($event);">
   <mat-tab *ngFor="let output of outputs; index as i" label="{{ output.name }}">
-    <div id ="{{ i }}"></div>
   </mat-tab>
 </mat-tab-group>
+<div id ="graph" style="text-align: center;"></div>
 
 
 

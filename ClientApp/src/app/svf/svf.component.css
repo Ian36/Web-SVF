@@ -67,3 +67,12 @@
 .mat-tab-group {
     margin-bottom: 48px;
   } */
+
+  #graph svg {
+    height: 100%;
+    width: auto;
+}
+
+.ngx-float-left {
+    float:left;
+}

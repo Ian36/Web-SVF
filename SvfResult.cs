@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace Capstone_Proj
 {
-    public class DotGraphs
+    public class SvfResult
     {
         public string Name { get; set; }
+        public string Output { get; set; }
         public List<DotGraph> Graphs { get; set; }
     }
 

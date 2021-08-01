@@ -21,6 +21,8 @@ export class SvfComponent implements OnInit {
   baseUrl;
   selectedIndex: number = 0;
   change;
+  commandLineOutput;
+
   constructor(public dialog: MatDialog, http: HttpClient, @Inject('BASE_URL') baseUrl: string, change: ChangeDetectorRef) {
     this.http = http;
     this.baseUrl = baseUrl;
@@ -38,30 +40,34 @@ export class SvfComponent implements OnInit {
     } else {
       console.log("submitting code: " + this.input);
       this.disableRunBtn = true;
-      this.http.post(this.baseUrl + 'svf', this.input).subscribe(result => {
+      const requestBody = {input: this.input};
+      this.http.post(this.baseUrl + 'svf', requestBody).subscribe(result => {
         this.outputs = result.graphs;
-        console.log(this.outputs);
-        window.setTimeout(() => this.renderDotGraphs(), 1000);
+        this.commandLineOutput = result.output;
+        console.log(result);
         this.disableRunBtn = false;
-      }, error => console.error(error));
-    }
+      }, error => {
+        console.error(error);
+    });
   }
+}
 
-  renderDotGraphs() {
-    console.log(document.querySelectorAll('*[id]'));
-
-    for(var i = 0; i < this.outputs.length; i++) {
-      graphviz("#mat-tab-content-0-" + i).renderDot(this.outputs[i].graph);
-    }
+onTabChanged($event) {
+  if(!this.outputs.length) {
+    document.getElementById("graph").innerHTML = "";
+  } else {
+    graphviz("#graph").fit(true).renderDot(this.outputs[$event.index].graph);
   }
+}
 
-  isInputEmpty() {
-    return !this.input;
-  }
 
-  openDialog() {
-    this.dialog.open(EmptyFieldDialog);
-  }
+isInputEmpty() {
+  return !this.input;
+}
+
+openDialog() {
+  this.dialog.open(EmptyFieldDialog);
+}
 
 }
 

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Win32.SafeHandles;
 
 namespace Capstone_Proj.Controllers
 {
@@ -13,11 +14,6 @@ namespace Capstone_Proj.Controllers
     [Route("[controller]")]
     public class SvfController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<SvfController> _logger;
 
         public SvfController(ILogger<SvfController> logger)
@@ -26,42 +22,76 @@ namespace Capstone_Proj.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(string input)
+        public async Task<IActionResult> Post([FromBody] RequestBody requestBody)
         {
-            LaunchSvfExample();
+            await WriteToCFile(requestBody.Input);
+            var output = await LaunchScript();
             var dotGraphs = GetDotGraphs();
-            var result = new DotGraphs
+            var result = new SvfResult
             {
                 Name = "Resultant Graphs",
-                Graphs = dotGraphs
+                Output = output,
+                Graphs = !output.Contains("error") ? dotGraphs : new List<DotGraph>()
             };
 
             return Ok(result);
         }
 
-        private static void LaunchSvfExample()
+        private async static Task<string> LaunchScript()
         {
-            // Use ProcessStartInfo class
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.CreateNoWindow = false;
-            startInfo.UseShellExecute = false;
-            startInfo.FileName = "svf-ex";
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.Arguments = "example.ll";
+            string command = "sh";
+            string argss = "analyzeBcFile.sh";
+            string verb = " ";
 
-            try
-            {
-                // Start the process with the info we specified.
-                // Call WaitForExit and then the using statement will close.
-                using (Process exeProcess = Process.Start(startInfo))
+            ProcessStartInfo procInfo = new ProcessStartInfo();
+            procInfo.WindowStyle = ProcessWindowStyle.Normal;
+            procInfo.UseShellExecute = false;
+            procInfo.FileName = command;   // 'sh' for bash 
+            procInfo.Arguments = argss;        // The Script name 
+            procInfo.Verb = verb;                // ------------
+            procInfo.RedirectStandardOutput = true;
+            procInfo.RedirectStandardError = true;
+
+            var p = new Process();
+            p.StartInfo = procInfo;
+            p.Start();
+            string output = p.StandardOutput.ReadToEnd();
+            string error = p.StandardError.ReadToEnd();
+            p.WaitForExit();
+            // await WaitForExitAsync(Process.Start(procInfo), new TimeSpan(0, 0, 30));// Start that process.
+            return !String.IsNullOrWhiteSpace(error) ? error : output;
+        }
+
+        private static Task<bool> WaitForExitAsync(Process process, TimeSpan timeout)
+        {
+            ManualResetEvent processWaitObject = new ManualResetEvent(false);
+            processWaitObject.SafeWaitHandle = new SafeWaitHandle(process.Handle, false);
+
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+
+            RegisteredWaitHandle registeredProcessWaitHandle = null;
+            registeredProcessWaitHandle = ThreadPool.RegisterWaitForSingleObject(
+                processWaitObject,
+                delegate (object state, bool timedOut)
                 {
-                    exeProcess.WaitForExit();
-                }
-            }
-            catch
-            {
-                // Log error.
-            }
+                    if (!timedOut)
+                    {
+                        registeredProcessWaitHandle.Unregister(null);
+                    }
+
+                    processWaitObject.Dispose();
+                    tcs.SetResult(!timedOut);
+                },
+                null /* state */,
+                timeout,
+                true /* executeOnlyOnce */);
+
+            return tcs.Task;
+        }
+
+        public static async Task WriteToCFile(string input)
+        {
+            await System.IO.File.WriteAllTextAsync("example.c", input);
         }
 
         private static List<DotGraph> GetDotGraphs()
