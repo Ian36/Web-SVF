@@ -1,20 +1,21 @@
-  <div class="inputs-outputs">
+  <div class="web-svf">
+    <app-toolbar (runEventEmitter)="run()" ></app-toolbar>
     <as-split direction="horizontal">
-      <as-split-area class="graphs" [size]="20">
-        <app-directory></app-directory>
+      <as-split-area class="graphs" [size]="10">
+        <app-directory [files]="files" [selectedFile]="selectedFile" (switchFileEventEmitter)="switchFile($event)" (createNewFileEventEmitter)="createNewFile()"></app-directory>
       </as-split-area>
-      <as-split-area class="graphs" [size]="40">
+      <as-split-area class="graphs" [size]="45">
         <as-split direction="vertical">
           <as-split-area class="input" [size]="67">
-            <app-input></app-input>
+            <app-input #input [(selectedFile)]="selectedFile"></app-input>
           </as-split-area>
           <as-split-area class="output" [size]="33">
-            <app-output></app-output>
+            <app-output #output ></app-output>
           </as-split-area>
         </as-split>
       </as-split-area>
-      <as-split-area class="graphs" [size]="40">
-        <app-graphs></app-graphs>
+      <as-split-area class="graphs" [size]="45">
+        <app-graphs #graphs></app-graphs>
       </as-split-area>
     </as-split>
   </div>

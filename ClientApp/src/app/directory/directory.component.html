@@ -1,1 +1,10 @@
-<p>directory works!</p>
+<div class="directory">
+    <div class="d-flex flex-column" >
+        <div class="d-flex align-items-center file-item" (click)="switchFile(file)" [ngClass]="file.id === selectedFile.id ? 'selected-file' : ''" *ngFor="let file of files">
+            {{file.name}}
+        </div>
+        <div (click)="createNewFile()" class="d-flex justify-content-center align-items-center file-item">
+            <i class="fa fa-plus add-icon"></i>
+        </div>
+    </div>
+</div>

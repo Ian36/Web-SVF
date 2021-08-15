@@ -557,35 +557,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ian01\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/ian/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ian01\\Desktop\\CapstoneProject\\Capstone_Proj.csproj",
+      "projectUniqueName": "/home/ian/Desktop/CapstoneProject/Capstone_Proj.csproj",
       "projectName": "Capstone_Proj",
-      "projectPath": "C:\\Users\\ian01\\Desktop\\CapstoneProject\\Capstone_Proj.csproj",
-      "packagesPath": "C:\\Users\\ian01\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ian01\\Desktop\\CapstoneProject\\obj\\",
+      "projectPath": "/home/ian/Desktop/CapstoneProject/Capstone_Proj.csproj",
+      "packagesPath": "/home/ian/.nuget/packages/",
+      "outputPath": "/home/ian/Desktop/CapstoneProject/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ian01\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/ian/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -597,7 +590,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.SpaServices.Extensions": {
             "target": "Package",
@@ -622,7 +614,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.411/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,3 +1,4 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,11 +10,13 @@ export class ToolbarComponent implements OnInit {
 
   constructor() { }
 
+  @Output() runEventEmitter = new EventEmitter<any>();
+
   ngOnInit(): void {
   }
 
   run() {
-    alert('run');
+    this.runEventEmitter.emit();
   }
 
 }
