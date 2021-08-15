@@ -1,0 +1,10 @@
+<div class="graphs">
+
+  <h2 *ngIf="outputs.length === 0" class="no-output-header">The output of your code will be displayed here.</h2>
+  <mat-tab-group mat-align-tabs="start" (selectedTabChange)="onTabChanged($event);">
+    <mat-tab *ngFor="let output of outputs; index as i" label="{{ output.name }}">
+    </mat-tab>
+  </mat-tab-group>
+  <div id="graph" style="text-align: center;"></div>
+
+</div>
