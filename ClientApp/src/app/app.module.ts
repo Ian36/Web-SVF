@@ -11,30 +11,48 @@ import { SvfComponent } from './svf/svf.component';
 
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
+import { WebSvfComponent } from './web-svf/web-svf.component';
+import { InputComponent } from './input/input.component';
+import { OutputComponent } from './output/output.component';
+import { GraphsComponent } from './graphs/graphs.component';
+
+import { AngularSplitModule } from 'angular-split';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DirectoryComponent } from './directory/directory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    SvfComponent
+    SvfComponent,
+    WebSvfComponent,
+    InputComponent,
+    OutputComponent,
+    GraphsComponent,
+    ToolbarComponent,
+    DirectoryComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: SvfComponent, pathMatch: 'full' },
-      { path: 'svf', component: SvfComponent },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'websvf', component: WebSvfComponent, pathMatch: 'full' },
+      { path: 'svf', component: SvfComponent, pathMatch: 'full' },
     ]),
     CodemirrorModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    AngularSplitModule,
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

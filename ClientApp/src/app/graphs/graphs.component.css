@@ -1,0 +1,22 @@
+.graphs {
+    height: 100%;
+    background-color: #222831;
+    color: #E8E8E8;
+}
+
+.no-output-header {
+    color: #E8E8E8;
+}
+
+#graph svg {
+    height: 100%;
+    width: auto;
+}
+
+.mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    color: #E8E8E8;
+    font-weight: 700;
+}

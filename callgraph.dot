@@ -1,8 +1,7 @@
 digraph "Call Graph" {
 	label="Call Graph";
 
-	Node0x55c11db9cf10 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 2 \{fun: printf\}}"];
-	Node0x55c11dba39f0 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 1 \{fun: llvm.dbg.declare\}}"];
-	Node0x55c11dba38d0 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: main\}|{<s0>1}}"];
-	Node0x55c11dba38d0:s0 -> Node0x55c11db9cf10[color=black];
+	Node0x55d457218a70 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 1 \{fun: printf\}}"];
+	Node0x55d457218950 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: main\}|{<s0>1}}"];
+	Node0x55d457218950:s0 -> Node0x55d457218a70[color=black];
 }

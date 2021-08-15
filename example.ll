@@ -9,31 +9,15 @@ target triple = "x86_64-unknown-linux-gnu"
 define dso_local i32 @main() #0 !dbg !7 {
 entry:
   %retval = alloca i32, align 4
-  %me = alloca i32, align 4
-  %me1 = alloca i32, align 4
-  %me2 = alloca i32, align 4
-  %me3 = alloca i32, align 4
   store i32 0, i32* %retval, align 4
-  call void @llvm.dbg.declare(metadata i32* %me, metadata !11, metadata !DIExpression()), !dbg !12
-  store i32 0, i32* %me, align 4, !dbg !12
-  call void @llvm.dbg.declare(metadata i32* %me1, metadata !13, metadata !DIExpression()), !dbg !14
-  store i32 1, i32* %me1, align 4, !dbg !14
-  call void @llvm.dbg.declare(metadata i32* %me2, metadata !15, metadata !DIExpression()), !dbg !16
-  store i32 2, i32* %me2, align 4, !dbg !16
-  call void @llvm.dbg.declare(metadata i32* %me3, metadata !17, metadata !DIExpression()), !dbg !18
-  store i32 3, i32* %me3, align 4, !dbg !18
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str, i64 0, i64 0)), !dbg !19
-  ret i32 0, !dbg !20
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str, i64 0, i64 0)), !dbg !11
+  ret i32 0, !dbg !12
 }
 
-; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
-declare void @llvm.dbg.declare(metadata, metadata, metadata) #1
-
-declare dso_local i32 @printf(i8*, ...) #2
+declare dso_local i32 @printf(i8*, ...) #1
 
 attributes #0 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #1 = { nofree nosync nounwind readnone speculatable willreturn }
-attributes #2 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
 !llvm.dbg.cu = !{!0}
 !llvm.module.flags = !{!3, !4, !5}
@@ -50,13 +34,5 @@ attributes #2 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-preci
 !8 = !DISubroutineType(types: !9)
 !9 = !{!10}
 !10 = !DIBasicType(name: "int", size: 32, encoding: DW_ATE_signed)
-!11 = !DILocalVariable(name: "me", scope: !7, file: !1, line: 4, type: !10)
-!12 = !DILocation(line: 4, column: 6, scope: !7)
-!13 = !DILocalVariable(name: "me1", scope: !7, file: !1, line: 5, type: !10)
-!14 = !DILocation(line: 5, column: 7, scope: !7)
-!15 = !DILocalVariable(name: "me2", scope: !7, file: !1, line: 6, type: !10)
-!16 = !DILocation(line: 6, column: 7, scope: !7)
-!17 = !DILocalVariable(name: "me3", scope: !7, file: !1, line: 7, type: !10)
-!18 = !DILocation(line: 7, column: 7, scope: !7)
-!19 = !DILocation(line: 9, column: 3, scope: !7)
-!20 = !DILocation(line: 11, column: 4, scope: !7)
+!11 = !DILocation(line: 4, column: 4, scope: !7)
+!12 = !DILocation(line: 5, column: 4, scope: !7)
