@@ -25,7 +25,7 @@ namespace Capstone_Proj.Controllers
         public async Task<IActionResult> Post([FromBody] RequestBody requestBody)
         {
             await WriteToCFile(requestBody.Input);
-            var output = await LaunchScript();
+            var output = LaunchScript();
             var dotGraphs = GetDotGraphs();
             var result = new SvfResult
             {
@@ -37,7 +37,7 @@ namespace Capstone_Proj.Controllers
             return Ok(result);
         }
 
-        private async static Task<string> LaunchScript()
+        private static string LaunchScript()
         {
             string command = "sh";
             string argss = "analyzeBcFile.sh";

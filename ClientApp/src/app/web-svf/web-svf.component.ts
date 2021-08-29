@@ -39,7 +39,7 @@ export class WebSvfComponent implements OnInit {
   initialiseDirectory() {
     this.files.push({
       id: this.files.length,
-      name: 'Untitled File',
+      name: 'New File',
       data: "Enter your code here..."
     });
     this.selectedFile = this.files[0];
@@ -49,7 +49,7 @@ export class WebSvfComponent implements OnInit {
   createNewFile() {
     const newFile = {
       id: this.files.length,
-      name: 'Untitled File' + this.files.length,
+      name: 'New File ' + this.files.length,
       data: "Enter your code here..."
     };
     this.files.push(newFile);
