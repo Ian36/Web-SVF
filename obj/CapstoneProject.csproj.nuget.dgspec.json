@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/ubuntu/CapstoneProject/CapstoneProject.csproj": {}
+    "C:\\Users\\ian01\\Desktop\\CapstoneProject\\CapstoneProject.csproj": {}
   },
   "projects": {
-    "/home/ubuntu/CapstoneProject/CapstoneProject.csproj": {
+    "C:\\Users\\ian01\\Desktop\\CapstoneProject\\CapstoneProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ubuntu/CapstoneProject/CapstoneProject.csproj",
+        "projectUniqueName": "C:\\Users\\ian01\\Desktop\\CapstoneProject\\CapstoneProject.csproj",
         "projectName": "CapstoneProject",
-        "projectPath": "/home/ubuntu/CapstoneProject/CapstoneProject.csproj",
-        "packagesPath": "/home/ubuntu/.nuget/packages/",
-        "outputPath": "/home/ubuntu/CapstoneProject/obj/",
+        "projectPath": "C:\\Users\\ian01\\Desktop\\CapstoneProject\\CapstoneProject.csproj",
+        "packagesPath": "C:\\Users\\ian01\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ian01\\Desktop\\CapstoneProject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/ubuntu/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ian01\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
