@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Capstone_Proj
+namespace CapstoneProject
 {
     public class RequestBody
     {
