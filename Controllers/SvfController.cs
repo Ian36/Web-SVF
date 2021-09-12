@@ -15,11 +15,6 @@ namespace CapstoneProject.Controllers
     [Route("[controller]")]
     public class SvfController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<SvfController> _logger;
 
         public SvfController(ILogger<SvfController> logger)
