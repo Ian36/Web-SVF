@@ -27,6 +27,12 @@ namespace CapstoneProject.Controllers
             _logger = logger;
         }
 
+	[HttpGet]
+	public async Task<IActionResult> Get([FromQuery] string input)
+	{
+	    return Ok(input);
+	}
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RequestBody requestBody)
         {
