@@ -27,7 +27,7 @@
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@hpcc-js/wasm": "^1.4.1",
+    "@hpcc-js/wasm": "^1.11.0",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
     "angular-split": "^5.0.0",
     "aspnet-prerendering": "^3.0.1",
