@@ -5,7 +5,9 @@
 @import "~font-awesome/css/font-awesome.min.css";
 
 body, html {
-  height: 96%;
+  height: 94%;
+  border-radius: 4px;
+  background: rgb(255, 255, 255);
 }
 
 .ast-match-highlight {
@@ -16,6 +18,22 @@ body, html {
   font-size: 20px;
 }
 
-.home {
-  height: 96%;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

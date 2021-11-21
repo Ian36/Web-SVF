@@ -1,8 +1,20 @@
 <div class="split-view">
-  <ngx-codemirror [(ngModel)]="selectedFile.data" [options]="{
-      lineNumbers: true,
-      theme: 'material',
-      mode: 'clike',
-      viewportMargin: '20'
-    }"></ngx-codemirror>
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="C Code">
+        <ngx-codemirror #codeMirror [(ngModel)]="selectedFile.data" [options]="{
+          lineNumbers: true,
+          theme: 'material',
+          mode: 'clike',
+          viewportMargin: '20'
+        }"></ngx-codemirror>
+      </mat-tab>
+      <mat-tab label="LLVM">
+        <ngx-codemirror [(ngModel)]="selectedLlvm" [options]="{
+          lineNumbers: true,
+          theme: 'material',
+          mode: 'clike',
+          viewportMargin: '20'
+        }"></ngx-codemirror>
+      </mat-tab>
+    </mat-tab-group>
 </div>

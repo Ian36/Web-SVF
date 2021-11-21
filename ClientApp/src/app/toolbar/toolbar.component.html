@@ -1,8 +1,20 @@
-<div class="d-flex align-items-center toolbar justify-content-end">
-  <div class="btn-group">
-    <button type="button" class="btn btn-secondary" (click)="run()">
-      <i class="fa fa-play run-icon"></i>
-      Run
-    </button>
+<div class="d-flex flex-row toolbar">
+  <div class="d-flex align-items-center justify-content-center" style="width: 10%; padding: 0 1%;">
+    <span class="heading">WebSVF</span>
+  </div>
+  <div class="d-flex align-items-center tools justify-content-end">
+    <div style="margin-right: 5%;">
+      <span>Compile Options: </span>
+      <input [(ngModel)]="compileOptions" type="text" class="compile-option-input">
+      <button type="button" class="btn btn-secondary reset-btn" (click)="resetCompileOptions()">
+        Reset Default Options
+      </button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary" (click)="run()">
+        <i class="fa fa-play run-icon"></i>
+        Run
+      </button>
+    </div>
   </div>
 </div>

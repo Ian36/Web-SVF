@@ -156,3 +156,9 @@ C:/Users/ian01/Desktop/CapstoneProject/obj/Debug/netcoreapp3.1/Capstone_Proj.pdb
 C:/Users/ian01/Desktop/CapstoneProject/obj/Debug/netcoreapp3.1/Capstone_Proj.genruntimeconfig.cache
 C:/Users/ian01/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/package-lock.json
 /home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/package-lock.json
+/home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/published/web.config
+/home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/published/appsettings.Development.json
+/home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/published/appsettings.json
+/home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/published/Capstone_Proj.deps.json
+/home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/published/Capstone_Proj.runtimeconfig.json
+/home/ian/Desktop/CapstoneProject/bin/Debug/netcoreapp3.1/published/package-lock.json

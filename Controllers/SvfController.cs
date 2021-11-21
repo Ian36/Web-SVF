@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Win32.SafeHandles;
+using System.Net;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Capstone_Proj.Controllers
 {
@@ -24,17 +27,47 @@ namespace Capstone_Proj.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RequestBody requestBody)
         {
+            await SetCompileOptions(requestBody.CompileOptions);
             await WriteToCFile(requestBody.Input);
             var output = await LaunchScript();
             var dotGraphs = GetDotGraphs();
+            var llvm = await GetLLVMFile();
             var result = new SvfResult
             {
                 Name = "Resultant Graphs",
                 Output = output,
-                Graphs = !output.Contains("error") ? dotGraphs : new List<DotGraph>()
+                Graphs = !output.Contains("error") ? dotGraphs : new List<DotGraph>(),
+                Llvm = llvm
             };
 
             return Ok(result);
+
+            //send a post request
+            // var request = (HttpWebRequest)WebRequest.Create("http://3.142.95.238/svf");
+            // request.Method = "POST";
+            // request.ContentType = "application/json";
+            // var json = JsonConvert.SerializeObject(requestBody);
+            // var data = Encoding.UTF8.GetBytes(json);
+            // using (var stream = await request.GetRequestStreamAsync())
+            // {
+            //     stream.Write(data, 0, data.Length);
+            // }
+            // var response = (HttpWebResponse)await request.GetResponseAsync();
+            // var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            // var result = JsonConvert.DeserializeObject<SvfResult>(responseString);
+            // return Ok(result);
+            
+        }
+
+        private static async Task<string> GetLLVMFile()
+        {
+            return System.IO.File.ReadAllText("example.ll");
+        }
+
+        private static async Task SetCompileOptions(string compileOptions)
+        {
+            var analyzeBcScript = "clang " + compileOptions + " example.c -o example.ll\n./svf-ex example.ll";
+            await System.IO.File.WriteAllTextAsync("analyzeBcFile.sh", analyzeBcScript);
         }
 
         private async static Task<string> LaunchScript()

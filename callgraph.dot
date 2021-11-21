@@ -1,7 +1,7 @@
 digraph "Call Graph" {
 	label="Call Graph";
 
-	Node0x55d457218a70 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 1 \{fun: printf\}}"];
-	Node0x55d457218950 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: main\}|{<s0>1}}"];
-	Node0x55d457218950:s0 -> Node0x55d457218a70[color=black];
+	Node0x55a635c5db10 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 1 \{fun: printf\}}"];
+	Node0x55a635c5d9f0 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: main\}|{<s0>1}}"];
+	Node0x55a635c5d9f0:s0 -> Node0x55a635c5db10[color=black];
 }
