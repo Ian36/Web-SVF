@@ -8,6 +8,7 @@ namespace Capstone_Proj
         public string Name { get; set; }
         public string Output { get; set; }
         public List<DotGraph> Graphs { get; set; }
+        public string Llvm { get; set; }
     }
 
     public class DotGraph

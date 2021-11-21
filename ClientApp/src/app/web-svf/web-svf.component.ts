@@ -12,6 +12,7 @@ import { SvfService } from '../svf.service';
 })
 export class WebSvfComponent implements OnInit {
   selectedFile: IFile;
+  selectedLlvm: string;
   files: IFile[] = [];
   constructor(private svfService: SvfService) { }
 
@@ -23,11 +24,12 @@ export class WebSvfComponent implements OnInit {
     this.initialiseDirectory();
   }
 
-  run() {
-    this.svfService.run({ input: this.selectedFile.data }).subscribe(
+  run($event) {
+    this.svfService.run({ input: this.selectedFile.data, compileOptions: $event }).subscribe(
       (result) => {
-        this.output.output += result.output;
+        this.output.output += '\n' + result.output;
         this.graphs.outputs = result.graphs;
+        this.selectedLlvm = result.llvm;
         console.log(result);
       },
       (error) => {
@@ -40,7 +42,7 @@ export class WebSvfComponent implements OnInit {
     this.files.push({
       id: this.files.length,
       name: 'New File',
-      data: "Enter your code here..."
+      data: "#include <stdio.h>\nint main() {\n   \/\/ printf() displays the string inside quotation\n   printf(\"Hello, World!\");\n   return 0;\n};"
     });
     this.selectedFile = this.files[0];
     console.log('Selected file is: ' + this.selectedFile.id);
@@ -59,6 +61,10 @@ export class WebSvfComponent implements OnInit {
 
   switchFile(file) {
     this.selectedFile = file;
+  }
+
+  selectLineOnInput(event) {
+    this.input.selectLine(parseInt(event));
   }
 
 }
