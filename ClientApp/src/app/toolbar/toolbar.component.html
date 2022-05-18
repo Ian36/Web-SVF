@@ -9,6 +9,12 @@
       <button type="button" class="btn btn-secondary reset-btn" (click)="resetCompileOptions()">
         Reset Default Options
       </button>
+      <button *ngIf="!isLoading" type="button" class="btn btn-secondary reset-btn" (click)="updateWebSvf()">
+        Update WebSVF
+      </button>
+      <button *ngIf="isLoading" type="button" class="btn btn-secondary reset-btn" disabled>
+        Updating WebSVF
+      </button>
     </div>
     <div class="btn-group">
       <button type="button" class="btn btn-primary" (click)="run()">

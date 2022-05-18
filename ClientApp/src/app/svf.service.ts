@@ -14,4 +14,8 @@ export class SvfService {
   run(input): Observable<IResult> {
     return this.http.post<IResult>(this.baseUrl + 'svf', input);
   }
+
+  updateSvf(): Observable<any> {
+    return this.http.get(this.baseUrl + 'svf');
+  }
 }

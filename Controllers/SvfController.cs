@@ -29,7 +29,7 @@ namespace Capstone_Proj.Controllers
         {
             await SetCompileOptions(requestBody.CompileOptions);
             await WriteToCFile(requestBody.Input);
-            var output = await LaunchScript();
+            var output = await LaunchScript("analyzeBcFile.sh");
             var dotGraphs = GetDotGraphs();
             var llvm = await GetLLVMFile();
             var result = new SvfResult
@@ -41,22 +41,20 @@ namespace Capstone_Proj.Controllers
             };
 
             return Ok(result);
+        }
 
-            //send a post request
-            // var request = (HttpWebRequest)WebRequest.Create("http://3.142.95.238/svf");
-            // request.Method = "POST";
-            // request.ContentType = "application/json";
-            // var json = JsonConvert.SerializeObject(requestBody);
-            // var data = Encoding.UTF8.GetBytes(json);
-            // using (var stream = await request.GetRequestStreamAsync())
-            // {
-            //     stream.Write(data, 0, data.Length);
-            // }
-            // var response = (HttpWebResponse)await request.GetResponseAsync();
-            // var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            // var result = JsonConvert.DeserializeObject<SvfResult>(responseString);
-            // return Ok(result);
-            
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            await CreatePullLatestScript();
+            var output = await LaunchScript("gitPullScript.sh");
+            return Ok(output);
+        }
+
+        private static async Task CreatePullLatestScript()
+        {
+            var GitPullScript = "npm i --silent svf-lib --prefix ${HOME}\nwget https://github.com/SVF-tools/SVF-example/archive/refs/heads/master.zip\nunzip master.zip\ncd SVF-example-master\nsource ./env.sh\ncmake . && make";
+            await System.IO.File.WriteAllTextAsync("gitPullScript.sh", GitPullScript);
         }
 
         private static async Task<string> GetLLVMFile()
@@ -70,10 +68,9 @@ namespace Capstone_Proj.Controllers
             await System.IO.File.WriteAllTextAsync("analyzeBcFile.sh", analyzeBcScript);
         }
 
-        private async static Task<string> LaunchScript()
+        private async static Task<string> LaunchScript(string argss)
         {
             string command = "sh";
-            string argss = "analyzeBcFile.sh";
             string verb = " ";
 
             ProcessStartInfo procInfo = new ProcessStartInfo();
