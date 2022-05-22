@@ -40,3 +40,8 @@
   flex: 0;
   min-width: 12px;
 }
+
+/* Styles for tab labels */
+.input .mat-tab-label {
+  color: white;
+}

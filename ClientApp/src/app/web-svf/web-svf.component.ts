@@ -14,7 +14,7 @@ export class WebSvfComponent implements OnInit {
   selectedFile: IFile;
   selectedLlvm: string;
   files: IFile[] = [];
-  displayLandingPage = false;
+  displayLandingPage = true;
   defaultOptions: string = "-S -c -g -fno-discard-value-names -emit-llvm"
   compileOptions: string;
   output: string;

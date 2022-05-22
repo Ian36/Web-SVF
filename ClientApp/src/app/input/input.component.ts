@@ -1,11 +1,12 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, ViewEncapsulation } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { IFile } from '../models/file';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  styleUrls: ['./input.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class InputComponent implements OnInit {
   showLlvm: boolean = false;
