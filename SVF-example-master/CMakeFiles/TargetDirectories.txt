@@ -1,0 +1,8 @@
+/home/ian/Desktop/CapstoneProject/SVF-example-master/CMakeFiles/rebuild_cache.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/CMakeFiles/acc_gen.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/CMakeFiles/edit_cache.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/CMakeFiles/omp_gen.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/CMakeFiles/intrinsics_gen.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/src/CMakeFiles/rebuild_cache.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/src/CMakeFiles/edit_cache.dir
+/home/ian/Desktop/CapstoneProject/SVF-example-master/src/CMakeFiles/svf-ex.dir

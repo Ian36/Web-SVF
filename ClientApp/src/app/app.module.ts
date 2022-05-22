@@ -22,6 +22,8 @@ import { AngularSplitModule } from 'angular-split';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DirectoryComponent } from './directory/directory.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { DirectoryComponent } from './directory/directory.component';
     GraphsComponent,
     ToolbarComponent,
     DirectoryComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -51,6 +54,7 @@ import { DirectoryComponent } from './directory/directory.component';
     MatTabsModule,
     AngularSplitModule,
     FontAwesomeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

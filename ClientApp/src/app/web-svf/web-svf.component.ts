@@ -14,20 +14,32 @@ export class WebSvfComponent implements OnInit {
   selectedFile: IFile;
   selectedLlvm: string;
   files: IFile[] = [];
+  displayLandingPage = false;
+  defaultOptions: string = "-S -c -g -fno-discard-value-names -emit-llvm"
+  compileOptions: string;
+  output: string;
+
   constructor(private svfService: SvfService) { }
 
   @ViewChild('input') input: InputComponent;
-  @ViewChild('output') output: OutputComponent;
+  // @ViewChild('output') output: OutputComponent;
   @ViewChild('graphs') graphs: GraphsComponent;
 
   ngOnInit(): void {
     this.initialiseDirectory();
+    this.resetCompileOptions();
   }
 
-  run($event) {
-    this.svfService.run({ input: this.selectedFile.data, compileOptions: $event }).subscribe(
+  resetCompileOptions() {
+    this.compileOptions = this.defaultOptions;
+  }
+
+  run() {
+    this.svfService.run({ input: this.selectedFile.data, compileOptions: this.compileOptions }).subscribe(
       (result) => {
-        this.output.output += '\n' + result.output;
+        console.log(result);
+        // this.output.output += '\n' + result.output;
+        this.output += '\n' + result.output;
         this.graphs.outputs = result.graphs;
         this.selectedLlvm = result.llvm;
         console.log(result);
@@ -67,4 +79,7 @@ export class WebSvfComponent implements OnInit {
     this.input.selectLine(parseInt(event));
   }
 
+  hideLandingPage() {
+    this.displayLandingPage = false;
+  }
 }

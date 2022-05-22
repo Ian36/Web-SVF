@@ -1,21 +1,33 @@
-  <div class="web-svf">
-    <app-toolbar (runEventEmitter)="run($event)" ></app-toolbar>
+  <div *ngIf="!displayLandingPage" class="web-svf">
+    <app-toolbar (runEventEmitter)="run($event)" (resetCompilerOptionsEmitter)="resetCompileOptions()" ></app-toolbar>
     <as-split style="border-radius: 4px;" direction="horizontal" [gutterSize] = "5">
-      <as-split-area class="graphs" [size]="10">
+      <!-- <as-split-area class="graphs" [size]="10">
         <app-directory [files]="files" [selectedFile]="selectedFile" (switchFileEventEmitter)="switchFile($event)" (createNewFileEventEmitter)="createNewFile()"></app-directory>
-      </as-split-area>
+      </as-split-area> -->
       <as-split-area class="graphs" [size]="45">
         <as-split direction="vertical" [gutterSize] = "5">
-          <as-split-area class="input" [size]="67">
+          <!-- <as-split-area class="input" [size]="67"> -->
+            <div class="d-flex flex-row align-items-center justify-content-center compile-options">
+              <span class="compile-options-label">Compile Options: </span>
+              <input [(ngModel)]="compileOptions" type="text" class="compile-option-input">
+              <button type="button" class="btn btn-primary mr-5" (click)="run()">
+                <i class="fa fa-play run-icon"></i>
+                Run
+              </button>
+            </div>
             <app-input #input [(selectedFile)]="selectedFile" [(selectedLlvm)]="selectedLlvm"></app-input>
-          </as-split-area>
-          <as-split-area class="output" [size]="33">
+          <!-- </as-split-area> -->
+          <!-- <as-split-area class="output" [size]="33">
             <app-output #output ></app-output>
-          </as-split-area>
+          </as-split-area> -->
         </as-split>
       </as-split-area>
       <as-split-area class="graphs" [size]="45">
         <app-graphs #graphs (selectLineOnInput)="selectLineOnInput($event)"></app-graphs>
       </as-split-area>
     </as-split>
+  </div>
+
+  <div *ngIf="displayLandingPage">
+    <app-landing-page (hideLandingPageEmitter)="hideLandingPage()"></app-landing-page>
   </div>

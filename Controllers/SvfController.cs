@@ -46,15 +46,30 @@ namespace Capstone_Proj.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            await CreatePullLatestScript();
-            var output = await LaunchScript("gitPullScript.sh");
-            return Ok(output);
+            CreatePullLatestScript();
+            // var output = await LaunchScript("gitPullScript.sh");
+            var response = new Response()
+            {
+                message = "Successfully updated WebSVF!" 
+            };
+            return Ok(response);
         }
 
-        private static async Task CreatePullLatestScript()
+        private void CreatePullLatestScript()
         {
-            var GitPullScript = "npm i --silent svf-lib --prefix ${HOME}\nwget https://github.com/SVF-tools/SVF-example/archive/refs/heads/master.zip\nunzip master.zip\ncd SVF-example-master\nsource ./env.sh\ncmake . && make";
-            await System.IO.File.WriteAllTextAsync("gitPullScript.sh", GitPullScript);
+            // var GitPullScript = "sudo apt-get install zlib1g-dev unzip cmake gcc g++ nodejs\nnpm i --silent svf-lib --prefix ${HOME}\nwget https://github.com/SVF-tools/SVF-example/archive/refs/heads/master.zip\nunzip -o master.zip\ncd SVF-example-master\nsource ./env.sh\ncmake . && make";
+            // await System.IO.File.WriteAllTextAsync("gitPullScript.sh", GitPullScript);
+
+            var getLatestSvf = Task.Run(async () =>
+            {
+                await RunScript();
+            });
+            getLatestSvf.Wait();
+        }
+
+        private static async Task RunScript()
+        {
+            var output = await LaunchScript("script.sh");
         }
 
         private static async Task<string> GetLLVMFile()
@@ -134,5 +149,9 @@ namespace Capstone_Proj.Controllers
 
             return dotFiles;
         }
+    }
+
+    public class Response {
+        public string message {get; set;}
     }
 }

@@ -1,11 +1,11 @@
 .graphs {
     height: 100%;
-    background-color: #222831;
-    color: #E8E8E8;
+    background-color: #0C1021;
+    color: #0C1021;
 }
 
 .no-output-header {
-    color: #E8E8E8;
+    color: #222831;
 }
 
 #graph svg {
@@ -17,7 +17,7 @@
     min-width: 25px !important;
     padding: 5px;
     background-color: transparent;
-    color: #E8E8E8;
+    color: #0C1021;
     font-weight: 700;
 }
 

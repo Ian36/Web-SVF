@@ -3,7 +3,7 @@
       <mat-tab label="C Code">
         <ngx-codemirror #codeMirror [(ngModel)]="selectedFile.data" [options]="{
           lineNumbers: true,
-          theme: 'material',
+          theme: 'blackboard',
           mode: 'clike',
           viewportMargin: '20'
         }"></ngx-codemirror>
@@ -11,7 +11,7 @@
       <mat-tab label="LLVM">
         <ngx-codemirror [(ngModel)]="selectedLlvm" [options]="{
           lineNumbers: true,
-          theme: 'material',
+          theme: 'blackboard',
           mode: 'clike',
           viewportMargin: '20'
         }"></ngx-codemirror>
