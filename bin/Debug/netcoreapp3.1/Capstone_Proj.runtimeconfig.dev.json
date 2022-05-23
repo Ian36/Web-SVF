@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/ian/.dotnet/store/|arch|/|tfm|",
-      "/home/ian/.nuget/packages"
+      "/home/ubuntu/.dotnet/store/|arch|/|tfm|",
+      "/home/ubuntu/.nuget/packages"
     ]
   }
 }

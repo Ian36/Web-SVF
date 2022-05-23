@@ -20,7 +20,10 @@ namespace Capstone_Proj
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseKestrel()
+                    .UseContentRoot(System.IO.Directory.GetCurrentDirectory())
+                    .UseUrls("http://*:5000")
+                    .UseStartup<Startup>();
                 });
     }
 }
