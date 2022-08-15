@@ -1,5 +1,5 @@
   <div *ngIf="!displayLandingPage" class="web-svf">
-    <app-toolbar (runEventEmitter)="run($event)" (resetCompilerOptionsEmitter)="resetCompileOptions()" ></app-toolbar>
+    <app-toolbar (runEventEmitter)="run($event)" (resetCompilerOptionsEmitter)="resetCompileOptions()" (openLandingPageEmitter)="openLandingPage()" ></app-toolbar>
     <as-split style="border-radius: 4px;" direction="horizontal" [gutterSize] = "5">
       <!-- <as-split-area class="graphs" [size]="10">
         <app-directory [files]="files" [selectedFile]="selectedFile" (switchFileEventEmitter)="switchFile($event)" (createNewFileEventEmitter)="createNewFile()"></app-directory>

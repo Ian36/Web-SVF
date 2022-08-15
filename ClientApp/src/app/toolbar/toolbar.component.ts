@@ -18,6 +18,7 @@ export class ToolbarComponent implements OnInit {
 
   @Output() runEventEmitter = new EventEmitter<string>();
   @Output() resetCompilerOptionsEmitter = new EventEmitter<string>();
+  @Output() openLandingPageEmitter = new EventEmitter<any>();
 
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class ToolbarComponent implements OnInit {
 
   run() {
     this.runEventEmitter.emit(this.compileOptions);
+  }
+
+  openLandingPage() {
+    this.openLandingPageEmitter.emit();
   }
 
   resetCompileOptions() {

@@ -34,6 +34,10 @@ export class WebSvfComponent implements OnInit {
     this.compileOptions = this.defaultOptions;
   }
 
+  openLandingPage() {
+    this.displayLandingPage = true;
+  }
+
   run() {
     this.svfService.run({ input: this.selectedFile.data, compileOptions: this.compileOptions }).subscribe(
       (result) => {
